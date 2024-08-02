@@ -46,8 +46,20 @@ print_color "$BLUE" "Please check the output above for any errors or additional 
 
 # Additional commands with appropriate spacing
 if [ -f /root/.bashrc ]; then
-    print_color "$BLUE" "Sourcing /root/.bashrc and running GaiaNet commands..."
-    sudo bash -c 'source /root/.bashrc && gaianet init && gaianet start && gaianet info'
+    print_color "$BLUE" "Sourcing /root/.bashrc..."
+    sudo bash -c 'source /root/.bashrc'
+
+    print_color "$BLUE" "Initializing GaiaNet..."
+    sudo bash -c 'gaianet init'
+    print_color "$GREEN" "GaiaNet initialized."
+
+    print_color "$BLUE" "Starting GaiaNet..."
+    sudo bash -c 'gaianet start'
+    print_color "$GREEN" "GaiaNet started."
+
+    print_color "$BLUE" "Getting GaiaNet info..."
+    sudo bash -c 'gaianet info'
+    print_color "$GREEN" "GaiaNet info retrieved."
 else
     print_color "$RED" "/root/.bashrc not found. Please check your installation."
 fi
