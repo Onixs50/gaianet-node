@@ -44,21 +44,22 @@ fi
 print_color "$GREEN" "GaiaNet installation process completed."
 print_color "$BLUE" "Please check the output above for any errors or additional instructions."
 
-# Additional commands with appropriate spacing
+# Adding GaiaNet to PATH and executing commands
 if [ -f /root/.bashrc ]; then
-    print_color "$BLUE" "Sourcing /root/.bashrc..."
+    print_color "$BLUE" "Adding GaiaNet to PATH and sourcing /root/.bashrc..."
+    echo 'export PATH=$PATH:/path/to/gaianet' >> /root/.bashrc
     sudo bash -c 'source /root/.bashrc'
 
     print_color "$BLUE" "Initializing GaiaNet..."
-    sudo bash -c 'gaianet init'
+    sudo bash -c 'export PATH=$PATH:/path/to/gaianet && gaianet init'
     print_color "$GREEN" "GaiaNet initialized."
 
     print_color "$BLUE" "Starting GaiaNet..."
-    sudo bash -c 'gaianet start'
+    sudo bash -c 'export PATH=$PATH:/path/to/gaianet && gaianet start'
     print_color "$GREEN" "GaiaNet started."
 
     print_color "$BLUE" "Getting GaiaNet info..."
-    sudo bash -c 'gaianet info'
+    sudo bash -c 'export PATH=$PATH:/path/to/gaianet && gaianet info'
     print_color "$GREEN" "GaiaNet info retrieved."
 else
     print_color "$RED" "/root/.bashrc not found. Please check your installation."
