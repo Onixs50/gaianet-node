@@ -1,5 +1,4 @@
 #!/bin/bash
-
 # Define colors
 BLUE='\033[0;34m'
 GREEN='\033[0;32m'
@@ -13,7 +12,6 @@ print_color() {
 
 # Clear the screen
 clear
-
 print_color "$BLUE" "Welcome to GaiaNet Node Installer"
 print_color "$BLUE" "======================================="
 echo
@@ -46,16 +44,19 @@ fi
 print_color "$GREEN" "GaiaNet installation process completed."
 print_color "$BLUE" "Please check the output above for any errors or additional instructions."
 
-# Additional commands with appropriate spacing
-sudo source /root/.bashrc
+# Source .bashrc if it exists
+if [ -f /root/.bashrc ]; then
+    . /root/.bashrc
+fi
+
 sleep 2
 gaianet init
 sleep 2
 gaianet start
 sleep 2
 gaianet info
-
 echo
+
 print_color "$GREEN" "╔════════════════════════════════════╗"
 print_color "$GREEN" "║         Edited by Onixia           ║"
 print_color "$GREEN" "╚════════════════════════════════════╝"
