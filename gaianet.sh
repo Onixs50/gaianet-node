@@ -27,9 +27,13 @@ if [ -d "$HOME/gaianet" ]; then
     echo_color $bold_green "Old installation removed successfully."
 fi
 
-echo_color $bold_purple "Enter the port you want to use (default is 8080):"
-read -p "Port: " port
-port=${port:-8080}
+echo_color $bold_purple "Checking if port 8080 is available..."
+if lsof -i :8080 > /dev/null 2>&1; then
+    echo_color $bold_red "Port 8080 is currently in use. Please choose a different port."
+    read -p "Enter a new port: " port
+else
+    port=8080
+fi
 echo_color $bold_cyan "Using port: $port"
 echo
 
@@ -58,11 +62,6 @@ curl -o $CONFIG_FILE $CONFIG_URL > /dev/null 2>&1
 sed -i "s/\"llamaedge_port\": \"[0-9]*\"/\"llamaedge_port\": \"$port\"/" $CONFIG_FILE
 echo_color $bold_green "Configuration file downloaded and modified successfully."
 echo
-
-if lsof -i :$port > /dev/null 2>&1; then
-    echo_color $bold_red "Port $port is in use. Please choose a different port."
-    exit 1
-fi
 
 echo_color $bold_cyan "Initializing GaiaNet node..."
 gaianet init --config $CONFIG_FILE > /dev/null 2>&1
