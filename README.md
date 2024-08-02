@@ -5,7 +5,10 @@ In this version, you can choose which port you want to start the node with.
 ## Instructions
 
 Follow these steps to set up and start the Gaianet node:
-
+```bash
+rm -rf gaianet
+rm gaianet.sh
+```
 ```bash
 # Update your system
 sudo apt-get update
