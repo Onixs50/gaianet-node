@@ -17,7 +17,7 @@ sudo apt-get install screen
 screen -S gaianet
 
 # Download the setup script
-wget https://github.com/Onixs50/gaianet-node/blob/main/gaianet.sh
+wget https://raw.githubusercontent.com/Onixs50/gaianet-node/main/gaianet.sh
 
 # Make the script executable
 chmod +x gaianet.sh
