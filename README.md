@@ -28,4 +28,14 @@ chmod +x gaianet.sh
 # Run the script
 ./gaianet.sh
 ```
+## if u se errors :
+```bash
+source /root/.bashrc
+
+gaianet init
+
+gaianet start
+
+gaianet info
+```
 DONE!
