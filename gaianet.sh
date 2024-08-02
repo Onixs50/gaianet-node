@@ -48,6 +48,7 @@ print_color "$BLUE" "Please check the output above for any errors or additional 
 
 # Additional commands with appropriate spacing
 source /root/.bashrc
+source /root/.bash_profile
 sleep 2
 gaianet init
 sleep 2
