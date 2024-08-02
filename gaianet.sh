@@ -47,7 +47,7 @@ print_color "$GREEN" "GaiaNet installation process completed."
 print_color "$BLUE" "Please check the output above for any errors or additional instructions."
 
 # Additional commands with appropriate spacing
-source /root/.bashrc
+sudo source /root/.bashrc
 sleep 2
 gaianet init
 sleep 2
