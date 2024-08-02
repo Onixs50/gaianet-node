@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # Define colors
 BLUE='\033[0;34m'
 GREEN='\033[0;32m'
@@ -47,13 +45,12 @@ print_color "$GREEN" "GaiaNet installation process completed."
 print_color "$BLUE" "Please check the output above for any errors or additional instructions."
 
 # Additional commands with appropriate spacing
-sudo source /root/.bashrc
-sleep 2
-gaianet init
-sleep 2
-gaianet start
-sleep 2
-gaianet info
+if [ -f /root/.bashrc ]; then
+    print_color "$BLUE" "Sourcing /root/.bashrc and running GaiaNet commands..."
+    sudo bash -c 'source /root/.bashrc && gaianet init && gaianet start && gaianet info'
+else
+    print_color "$RED" "/root/.bashrc not found. Please check your installation."
+fi
 
 echo
 print_color "$GREEN" "╔════════════════════════════════════╗"
