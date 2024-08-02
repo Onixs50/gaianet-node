@@ -28,7 +28,7 @@ chmod +x gaianet.sh
 # Run the script
 ./gaianet.sh
 ```
-## if u se errors :
+## if u see errors :
 ```bash
 source /root/.bashrc
 
